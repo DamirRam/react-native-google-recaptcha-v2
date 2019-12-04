@@ -26,8 +26,9 @@
   },
   "homepage": "https://github.com/xuho/react-native-google-recaptcha-v2#readme",
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "react-native-modal": "^11.5.1"
+    "react": "^16.8.0",
+    "react-native": "^0.60.0",
+    "react-native-modal": "^11.5.1",
+    "react-native-webview": "^7.0.1"
   }
 }
