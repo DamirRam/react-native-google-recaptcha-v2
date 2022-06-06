@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import Modal from "react-native-modal";
 import GoogleReCaptcha from "./GoogleReCaptcha";
 import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
+const modalTopOffset = Platform.OS === 'ios' ? getStatusBarHeight() + 20 : 0;
 
 class ConfirmGoogleCaptcha extends Component {
   state = {
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10
   },
-  modal: { margin: 0 },
+  modal: { margin: 0, paddingTop: modalTopOffset },
   wrapper: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.3)",
