@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { getStatusBarHeight } from 'react-native-iphone-screen-helper';
 import Modal from "react-native-modal";
 import GoogleReCaptcha from "./GoogleReCaptcha";
 import PropTypes from "prop-types";

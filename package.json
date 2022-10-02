@@ -29,6 +29,7 @@
     "react": "^16.8.0",
     "react-native": "^0.60.0",
     "react-native-modal": "^11.5.1",
-    "react-native-webview": "^7.0.1"
+    "react-native-webview": "^7.0.1",
+    "react-native-iphone-screen-helper": "^2.0.1"
   }
 }
