@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import { getStatusBarHeight } from 'react-native-iphone-screen-helper';
-import Modal from "react-native-modal";
+import { getStatusBarHeight } from "react-native-iphone-screen-helper";
+import { Modal } from "react-native-js-only-modal";
 import GoogleReCaptcha from "./GoogleReCaptcha";
 import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
-const modalTopOffset = Platform.OS === 'ios' ? getStatusBarHeight() + 20 : 0;
+const modalTopOffset = Platform.OS === "ios" ? getStatusBarHeight() + 20 : 0;
 
 class ConfirmGoogleCaptcha extends Component {
   state = {
-    show: false
+    show: false,
   };
   show = () => {
     this.setState({ show: true });
@@ -20,23 +20,19 @@ class ConfirmGoogleCaptcha extends Component {
   };
   render() {
     let { show } = this.state;
-    let {
-      siteKey,
-      baseUrl,
-      languageCode,
-      onMessage,
-      cancelButtonText
-    } = this.props;
+    let { siteKey, baseUrl, languageCode, onMessage, cancelButtonText } =
+      this.props;
+
     return (
       <Modal
-        useNativeDriver
-        hideModalContentWhileAnimating
-        deviceHeight={height}
-        deviceWidth={width}
         style={styles.modal}
-        animationIn="fadeIn"
-        animationOut="fadeOut"
-        isVisible={show}
+        backDropStyle={styles.background}
+        visible={show}
+        animationIn={"fadeIn"}
+        animationOut={"fadeOut"}
+        hideBackDrop={false}
+        duration={300}
+        useNativeDriver={true}
       >
         <View style={styles.wrapper}>
           <GoogleReCaptcha
@@ -58,22 +54,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
     textAlign: "center",
-    marginTop: 10
+    marginTop: 10,
   },
-  modal: { margin: 0 },
+  modal: { margin: 0, height, width },
+  background: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    overflow: "hidden",
+  },
   wrapper: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
-    justifyContent: "center",
-    overflow: "hidden",
-    paddingTop: modalTopOffset
-  }
+    paddingTop: modalTopOffset,
+  },
 });
 ConfirmGoogleCaptcha.propTypes = {
   siteKey: PropTypes.string.isRequired,
   baseUrl: PropTypes.string,
   onMessage: PropTypes.func,
   languageCode: PropTypes.string,
-  cancelButtonText: PropTypes.string
+  cancelButtonText: PropTypes.string,
 };
 export default ConfirmGoogleCaptcha;
