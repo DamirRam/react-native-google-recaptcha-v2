@@ -6,7 +6,7 @@ import GoogleReCaptcha from "./GoogleReCaptcha";
 import PropTypes from "prop-types";
 
 const { width, height } = Dimensions.get("window");
-const modalTopOffset = Platform.OS === "ios" ? getStatusBarHeight() + 20 : 0;
+const modalTopOffset = Platform.OS === "ios" ? getStatusBarHeight() + 20 : 40;
 
 class ConfirmGoogleCaptcha extends Component {
   state = {
